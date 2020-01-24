@@ -1,0 +1,119 @@
+﻿<Window x:Class="FssInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FssInfo"
+        mc:Ignorable="d"
+        Title="FssInfo"
+        Height="600"
+        Width="800"
+        Background="#fff0f0f0"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Сертификат пользователя:">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Расположение хранилища:" Grid.Row="0"/>
+                
+                <ComboBox Grid.Row="2" 
+                  x:Name="ComboBoxUserCertStoreLocation"/>
+
+                <TextBlock Text="Имя хранилища" Grid.Row="4"/>
+
+                <ComboBox Grid.Row="6" 
+                  x:Name="ComboBoxUserCertStoreName"/>
+
+                <TextBlock Text="Выбранный сертификат" Grid.Row="8"/>
+
+                <ListBox Grid.Row="10"
+                 x:Name="ListBoxUserCerts"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Сертификат ФСС:"
+                  Grid.Column="2">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Расположение хранилища:" Grid.Row="0"/>
+
+                <ComboBox Grid.Row="2" 
+                  x:Name="ComboBoxFssCertStoreLocation"/>
+
+                <TextBlock Text="Имя хранилища" Grid.Row="4"/>
+
+                <ComboBox Grid.Row="6" 
+                  x:Name="ComboBoxFssCertStoreName"/>
+
+                <TextBlock Text="Выбранный сертификат" Grid.Row="8"/>
+
+                <ListBox Grid.Row="10"
+                 x:Name="ListBoxFssCerts"/>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="2" 
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Период выборки: с"
+                       VerticalAlignment="Center"/>
+            <DatePicker VerticalAlignment="Center"
+                        Margin="6,0,6,0"
+                        x:Name="DatePickerBegin"/>
+            <TextBlock Text="по"
+                       VerticalAlignment="Center"/>
+            <DatePicker VerticalAlignment="Center"
+                        Margin="6,0,0,0"
+                        x:Name="DatePickerEnd"/>
+        </StackPanel>
+
+        <Button Grid.Row="4"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center"
+                Click="ButtonGetInfo_Click">
+            <TextBlock Text="Получить список больничных листов"
+                       Margin="6,0,6,0"/>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="FileOperationsLnImplService" targetNamespace="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://docs.fss.ru/WSLnCryptoV11/FileOperationsLnPort?xsd=1" namespace="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://docs.fss.ru/WSLnCryptoV11/FileOperationsLnPort?xsd=2" namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+    </xsd:schema>
+  </types>
+  <message name="prParseFilelnlpu">
+    <part name="parameters" element="tns:prParseFilelnlpu" />
+  </message>
+  <message name="prParseFilelnlpuResponse">
+    <part name="parameters" element="tns:prParseFilelnlpuResponse" />
+  </message>
+  <message name="SOAPException">
+    <part name="fault" element="tns:SOAPException" />
+  </message>
+  <message name="disableLn">
+    <part name="parameters" element="tns:disableLn" />
+  </message>
+  <message name="disableLnResponse">
+    <part name="parameters" element="tns:disableLnResponse" />
+  </message>
+  <message name="getExistingLNNumRange">
+    <part name="parameters" element="tns:getExistingLNNumRange" />
+  </message>
+  <message name="getExistingLNNumRangeResponse">
+    <part name="parameters" element="tns:getExistingLNNumRangeResponse" />
+  </message>
+  <message name="getLNListBySnils">
+    <part name="parameters" element="tns:getLNListBySnils" />
+  </message>
+  <message name="getLNListBySnilsResponse">
+    <part name="parameters" element="tns:getLNListBySnilsResponse" />
+  </message>
+  <message name="getLNListByDate">
+    <part name="parameters" element="tns:getLNListByDate" />
+  </message>
+  <message name="getLNListByDateResponse">
+    <part name="parameters" element="tns:getLNListByDateResponse" />
+  </message>
+  <message name="getNewLNNum">
+    <part name="parameters" element="tns:getNewLNNum" />
+  </message>
+  <message name="getNewLNNumResponse">
+    <part name="parameters" element="tns:getNewLNNumResponse" />
+  </message>
+  <message name="getNewLNNumRange">
+    <part name="parameters" element="tns:getNewLNNumRange" />
+  </message>
+  <message name="getNewLNNumRangeResponse">
+    <part name="parameters" element="tns:getNewLNNumRangeResponse" />
+  </message>
+  <message name="getLNData">
+    <part name="parameters" element="tns:getLNData" />
+  </message>
+  <message name="getLNDataResponse">
+    <part name="parameters" element="tns:getLNDataResponse" />
+  </message>
+  <portType name="FileOperationsLn">
+    <operation name="prParseFilelnlpu">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/prParseFilelnlpu" message="tns:prParseFilelnlpu" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/prParseFilelnlpuResponse" message="tns:prParseFilelnlpuResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/prParseFilelnlpu/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="disableLn">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/disableLn" message="tns:disableLn" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/disableLnResponse" message="tns:disableLnResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/disableLn/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getExistingLNNumRange">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getExistingLNNumRange" message="tns:getExistingLNNumRange" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getExistingLNNumRangeResponse" message="tns:getExistingLNNumRangeResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getExistingLNNumRange/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getLNListBySnils">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNListBySnils" message="tns:getLNListBySnils" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNListBySnilsResponse" message="tns:getLNListBySnilsResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNListBySnils/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getLNListByDate">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNListByDate" message="tns:getLNListByDate" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNListByDateResponse" message="tns:getLNListByDateResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNListByDate/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getNewLNNum">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getNewLNNum" message="tns:getNewLNNum" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getNewLNNumResponse" message="tns:getNewLNNumResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getNewLNNum/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getNewLNNumRange">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getNewLNNumRange" message="tns:getNewLNNumRange" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getNewLNNumRangeResponse" message="tns:getNewLNNumRangeResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getNewLNNumRange/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+    <operation name="getLNData">
+      <input wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNData" message="tns:getLNData" />
+      <output wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNDataResponse" message="tns:getLNDataResponse" />
+      <fault wsam:Action="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/FileOperationsLn/getLNData/Fault/SOAPException" name="SOAPException" message="tns:SOAPException" />
+    </operation>
+  </portType>
+  <binding name="FileOperationsLnPortBinding" type="tns:FileOperationsLn">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="prParseFilelnlpu">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/prParseFilelnlpu" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="disableLn">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/disableLn" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getExistingLNNumRange">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getExistingLNNumRange" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLNListBySnils">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNListBySnils" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLNListByDate">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNListByDate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getNewLNNum">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getNewLNNum" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getNewLNNumRange">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getNewLNNumRange" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLNData">
+      <soap:operation soapAction="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl/getLNData" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="FileOperationsLnImplService">
+    <port name="FileOperationsLnPort" binding="tns:FileOperationsLnPortBinding">
+      <soap:address location="https://docs.fss.ru/WSLnCryptoV11/FileOperationsLnPort" />
+    </port>
+  </service>
+</definitions>

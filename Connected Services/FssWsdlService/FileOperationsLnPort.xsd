@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl" xmlns:ns1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" elementFormDefault="qualified" targetNamespace="http://ru/ibs/fss/ln/ws/FileOperationsLn.wsdl" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://docs.fss.ru/WSLnCryptoV11/FileOperationsLnPort?xsd=2" namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+  <xs:element name="INFO" type="tns:INFO" />
+  <xs:element name="OUT_ROWSET" type="tns:OUT_ROWSET" />
+  <xs:element name="OUT_ROWSET_WRAPPER">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OUT_ROWSET" type="tns:OUT_ROWSET" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OutRowsetLNListbyDate" type="tns:OutRowsetLNListbyDate" />
+  <xs:element name="OutRowsetLNListbySnils" type="tns:OutRowsetLNListbySnils" />
+  <xs:element name="ROWSET" type="tns:ROWSET" />
+  <xs:element name="ROWSET_WRAPPER">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ROWSET" type="tns:ROWSET" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SOAPException" type="tns:SOAPException" />
+  <xs:element name="disableLn" type="tns:disableLn" />
+  <xs:element name="disableLnResponse" type="tns:disableLnResponse" />
+  <xs:element name="getExistingLNNumRange" type="tns:getExistingLNNumRange" />
+  <xs:element name="getExistingLNNumRangeResponse" type="tns:getExistingLNNumRangeResponse" />
+  <xs:element name="getLNData" type="tns:getLNData" />
+  <xs:element name="getLNDataResponse" type="tns:getLNDataResponse" />
+  <xs:element name="getLNListByDate" type="tns:getLNListByDate" />
+  <xs:element name="getLNListByDateResponse" type="tns:getLNListByDateResponse" />
+  <xs:element name="getLNListBySnils" type="tns:getLNListBySnils" />
+  <xs:element name="getLNListBySnilsResponse" type="tns:getLNListBySnilsResponse" />
+  <xs:element name="getNewLNNum" type="tns:getNewLNNum" />
+  <xs:element name="getNewLNNumRange" type="tns:getNewLNNumRange" />
+  <xs:element name="getNewLNNumRangeResponse" type="tns:getNewLNNumRangeResponse" />
+  <xs:element name="getNewLNNumResponse" type="tns:getNewLNNumResponse" />
+  <xs:element name="prParseFilelnlpu" type="tns:prParseFilelnlpu" />
+  <xs:element name="prParseFilelnlpuResponse" type="tns:prParseFilelnlpuResponse" />
+  <xs:complexType name="getLNListBySnils">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+      <xs:element minOccurs="0" name="snils" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLNListBySnilsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileOperationsLnUserGetLNListBySnilsOut" type="tns:FileOperationsLnUser_getLNListBySnils_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getLNListBySnils_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="OutRowsetLNListbySnils" type="tns:OutRowsetLNListbySnils" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WSResult">
+    <xs:sequence>
+      <xs:element name="REQUEST_ID" type="xs:string" />
+      <xs:element name="STATUS" type="xs:int" />
+      <xs:element minOccurs="0" name="MESS" type="xs:string" />
+      <xs:element minOccurs="0" name="INFO" type="tns:INFO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutRowsetLNListbySnils">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RowLNbySnils" type="tns:RowLNbySnils" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RowLNbySnils">
+    <xs:all>
+      <xs:element name="LN_CODE" type="xs:string" />
+      <xs:element name="LN_DATE" type="xs:date" />
+      <xs:element name="LN_STATE" type="xs:string" />
+      <xs:element name="LPU_OGRN" type="xs:string" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="INFO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ROWSET">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="ROW">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element name="ROW_NO" nillable="true" type="xs:integer" />
+                  <xs:element name="LN_CODE" type="xs:string" />
+                  <xs:element minOccurs="0" name="LN_HASH" type="xs:string" />
+                  <xs:element minOccurs="0" name="LN_STATE" type="xs:string" />
+                  <xs:element name="STATUS" type="xs:int" />
+                  <xs:element minOccurs="0" name="ERRORS">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="ERROR">
+                          <xs:complexType>
+                            <xs:all>
+                              <xs:element name="ERR_CODE" type="xs:string" />
+                              <xs:element name="ERR_MESS" type="xs:string" />
+                            </xs:all>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:all>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getNewLNNum_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element name="DATA" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getNewLNNumRange_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element name="DATA" nillable="true" type="tns:lnNumList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lnNumList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LNNum" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getLNData_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DATA">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="OUT_ROWSET" type="tns:OUT_ROWSET" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OUT_ROWSET">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW" type="tns:ROW" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROW">
+    <xs:all>
+      <xs:element name="SNILS" type="xs:string" />
+      <xs:element name="SURNAME" type="xs:string" />
+      <xs:element name="NAME" type="xs:string" />
+      <xs:element minOccurs="0" name="PATRONIMIC" type="xs:string" />
+      <xs:element name="BOZ_FLAG" type="xs:int" />
+      <xs:element minOccurs="0" name="LPU_EMPLOYER" type="xs:string" />
+      <xs:element name="LPU_EMPL_FLAG" nillable="true" type="xs:int" />
+      <xs:element name="LN_CODE" type="xs:string" />
+      <xs:element minOccurs="0" name="PREV_LN_CODE" type="xs:string" />
+      <xs:element name="PRIMARY_FLAG" type="xs:int" />
+      <xs:element name="DUPLICATE_FLAG" type="xs:int" />
+      <xs:element name="LN_DATE" type="xs:date" />
+      <xs:element name="LPU_NAME" type="xs:string" />
+      <xs:element minOccurs="0" name="LPU_ADDRESS" type="xs:string" />
+      <xs:element name="LPU_OGRN" type="xs:string" />
+      <xs:element name="BIRTHDAY" type="xs:date" />
+      <xs:element name="GENDER" type="xs:int" />
+      <xs:element name="REASON1" type="xs:string" />
+      <xs:element minOccurs="0" name="REASON2" type="xs:string" />
+      <xs:element minOccurs="0" name="REASON3" type="xs:string" />
+      <xs:element minOccurs="0" name="DIAGNOS" type="xs:string" />
+      <xs:element minOccurs="0" name="PARENT_CODE" type="xs:string" />
+      <xs:element name="DATE1" nillable="true" type="xs:date" />
+      <xs:element name="DATE2" nillable="true" type="xs:date" />
+      <xs:element minOccurs="0" name="VOUCHER_NO" type="xs:string" />
+      <xs:element minOccurs="0" name="VOUCHER_OGRN" type="xs:string" />
+      <xs:element name="SERV1_AGE" nillable="true" type="xs:int" />
+      <xs:element name="SERV1_MM" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SERV1_RELATION_CODE" type="xs:string" />
+      <xs:element minOccurs="0" name="SERV1_FIO" type="xs:string" />
+      <xs:element name="SERV2_AGE" nillable="true" type="xs:int" />
+      <xs:element name="SERV2_MM" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SERV2_RELATION_CODE" type="xs:string" />
+      <xs:element minOccurs="0" name="SERV2_FIO" type="xs:string" />
+      <xs:element name="PREGN12W_FLAG" nillable="true" type="xs:int" />
+      <xs:element name="HOSPITAL_DT1" nillable="true" type="xs:date" />
+      <xs:element name="HOSPITAL_DT2" nillable="true" type="xs:date" />
+      <xs:element minOccurs="0" name="HOSPITAL_BREACH">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HOSPITAL_BREACH_CODE" type="xs:string" />
+            <xs:element name="HOSPITAL_BREACH_DT" type="xs:date" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MSE_DT1" nillable="true" type="xs:date" />
+      <xs:element name="MSE_DT2" nillable="true" type="xs:date" />
+      <xs:element name="MSE_DT3" nillable="true" type="xs:date" />
+      <xs:element name="MSE_INVALID_GROUP" nillable="true" type="xs:int" />
+      <xs:element name="TREAT_PERIODS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="TREAT_FULL_PERIOD" type="tns:TREAT_FULL_PERIOD" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="LN_RESULT">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="RETURN_DATE_LPU" nillable="true" type="xs:date" />
+            <xs:element minOccurs="0" name="MSE_RESULT" type="xs:string" />
+            <xs:element name="OTHER_STATE_DT" nillable="true" type="xs:date" />
+            <xs:element minOccurs="0" name="NEXT_LN_CODE" type="xs:string" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LN_STATE" type="xs:string" />
+      <xs:element minOccurs="0" name="LN_HASH" type="xs:string" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="TREAT_FULL_PERIOD">
+    <xs:all>
+      <xs:element minOccurs="0" name="TREAT_CHAIRMAN_ROLE" type="xs:string" />
+      <xs:element minOccurs="0" name="TREAT_CHAIRMAN" type="xs:string" />
+      <xs:element name="TREAT_PERIOD" type="tns:TREAT_PERIOD" />
+    </xs:all>
+    <xs:attribute ref="ns1:Id" />
+  </xs:complexType>
+  <xs:complexType name="TREAT_PERIOD">
+    <xs:all>
+      <xs:element name="TREAT_DT1" type="xs:date" />
+      <xs:element name="TREAT_DT2" type="xs:date" />
+      <xs:element name="TREAT_DOCTOR_ROLE" type="xs:string" />
+      <xs:element name="TREAT_DOCTOR" type="xs:string" />
+    </xs:all>
+    <xs:attribute ref="ns1:Id" />
+  </xs:complexType>
+  <xs:complexType name="OutRowsetLNListbyDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RowLNbyDate" type="tns:RowLNbyDate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RowLNbyDate">
+    <xs:all>
+      <xs:element name="LN_CODE" type="xs:string" />
+      <xs:element name="LN_STATE" type="xs:string" />
+      <xs:element name="SNILS" type="xs:string" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ROWSET">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="SNILS" type="xs:string" />
+            <xs:element name="SURNAME" type="xs:string" />
+            <xs:element name="NAME" type="xs:string" />
+            <xs:element minOccurs="0" name="PATRONIMIC" type="xs:string" />
+            <xs:element name="BOZ_FLAG" type="xs:int" />
+            <xs:element minOccurs="0" name="LPU_EMPLOYER" type="xs:string" />
+            <xs:element name="LPU_EMPL_FLAG" nillable="true" type="xs:int" />
+            <xs:element name="LN_CODE" type="xs:string" />
+            <xs:element minOccurs="0" name="PREV_LN_CODE" type="xs:string" />
+            <xs:element name="PRIMARY_FLAG" type="xs:int" />
+            <xs:element name="DUPLICATE_FLAG" type="xs:int" />
+            <xs:element name="LN_DATE" type="xs:date" />
+            <xs:element name="LPU_NAME" type="xs:string" />
+            <xs:element minOccurs="0" name="LPU_ADDRESS" type="xs:string" />
+            <xs:element name="LPU_OGRN" type="xs:string" />
+            <xs:element name="BIRTHDAY" type="xs:date" />
+            <xs:element name="GENDER" type="xs:int" />
+            <xs:element name="REASON1" type="xs:string" />
+            <xs:element minOccurs="0" name="REASON2" type="xs:string" />
+            <xs:element minOccurs="0" name="REASON3" type="xs:string" />
+            <xs:element minOccurs="0" name="DIAGNOS" type="xs:string" />
+            <xs:element minOccurs="0" name="PARENT_CODE" type="xs:string" />
+            <xs:element name="DATE1" nillable="true" type="xs:date" />
+            <xs:element name="DATE2" nillable="true" type="xs:date" />
+            <xs:element minOccurs="0" name="VOUCHER_NO" type="xs:string" />
+            <xs:element minOccurs="0" name="VOUCHER_OGRN" type="xs:string" />
+            <xs:element name="SERV1_AGE" nillable="true" type="xs:int" />
+            <xs:element name="SERV1_MM" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="SERV1_RELATION_CODE" type="xs:string" />
+            <xs:element minOccurs="0" name="SERV1_FIO" type="xs:string" />
+            <xs:element name="SERV2_AGE" nillable="true" type="xs:int" />
+            <xs:element name="SERV2_MM" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="SERV2_RELATION_CODE" type="xs:string" />
+            <xs:element minOccurs="0" name="SERV2_FIO" type="xs:string" />
+            <xs:element name="PREGN12W_FLAG" nillable="true" type="xs:int" />
+            <xs:element name="HOSPITAL_DT1" nillable="true" type="xs:date" />
+            <xs:element name="HOSPITAL_DT2" nillable="true" type="xs:date" />
+            <xs:element minOccurs="0" name="HOSPITAL_BREACH">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="HOSPITAL_BREACH_CODE" type="xs:string" />
+                  <xs:element name="HOSPITAL_BREACH_DT" type="xs:date" />
+                </xs:sequence>
+                <xs:attribute ref="ns1:Id" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="MSE_DT1" nillable="true" type="xs:date" />
+            <xs:element name="MSE_DT2" nillable="true" type="xs:date" />
+            <xs:element name="MSE_DT3" nillable="true" type="xs:date" />
+            <xs:element name="MSE_INVALID_GROUP" nillable="true" type="xs:int" />
+            <xs:element name="TREAT_PERIODS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="TREAT_FULL_PERIOD" type="tns:TREAT_FULL_PERIOD" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="LN_RESULT">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element name="RETURN_DATE_LPU" nillable="true" type="xs:date" />
+                  <xs:element minOccurs="0" name="MSE_RESULT" type="xs:string" />
+                  <xs:element name="OTHER_STATE_DT" nillable="true" type="xs:date" />
+                  <xs:element minOccurs="0" name="NEXT_LN_CODE" type="xs:string" />
+                </xs:all>
+                <xs:attribute ref="ns1:Id" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LN_STATE" type="xs:string" />
+            <xs:element minOccurs="0" name="LN_HASH" type="xs:string" />
+          </xs:all>
+          <xs:attribute ref="ns1:Id" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute ref="tns:version" />
+    <xs:attribute ref="tns:software" />
+    <xs:attribute ref="tns:version_software" />
+    <xs:attribute ref="tns:author" />
+    <xs:attribute ref="tns:phone" />
+    <xs:attribute ref="tns:email" />
+  </xs:complexType>
+  <xs:complexType name="PrParseFilelnlpuElement">
+    <xs:sequence>
+      <xs:element name="ogrn" type="xs:string" />
+      <xs:element name="pXmlFile" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ROWSET" type="tns:ROWSET" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getExistingLNNumRange_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element name="DATA" nillable="true" type="tns:lnNumList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_disableLn_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DATA">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="OUT_ROWSET" type="tns:OUT_ROWSET" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FileOperationsLnUser_getLNListByDate_Out">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WSResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="OutRowsetLNListbyDate" type="tns:OutRowsetLNListbyDate" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SOAPException">
+    <xs:sequence>
+      <xs:element minOccurs="0" form="unqualified" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="disableLn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+      <xs:element minOccurs="0" name="lnCode" type="xs:string" />
+      <xs:element minOccurs="0" name="snils" type="xs:string" />
+      <xs:element minOccurs="0" name="reasonCode" type="xs:string" />
+      <xs:element minOccurs="0" name="reason" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="disableLnResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileOperationsLnUserDisableLnOut" type="tns:FileOperationsLnUser_disableLn_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getExistingLNNumRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getExistingLNNumRangeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileOperationsLnUserGetExistingLNNumRangeOut" type="tns:FileOperationsLnUser_getExistingLNNumRange_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLNListByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLNListByDateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileOperationsLnUserGetLNListByDateOut" type="tns:FileOperationsLnUser_getLNListByDate_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNewLNNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNewLNNumResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileOperationsLnUserGetNewLNNumOut" type="tns:FileOperationsLnUser_getNewLNNum_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prParseFilelnlpu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:PrParseFilelnlpuElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prParseFilelnlpuResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WSResult" type="tns:WSResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNewLNNumRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+      <xs:element name="cntLnNumbers" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNewLNNumRangeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileOperationsLnUserGetNewLNNumRangeOut" type="tns:FileOperationsLnUser_getNewLNNumRange_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLNData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogrn" type="xs:string" />
+      <xs:element minOccurs="0" name="lnCode" type="xs:string" />
+      <xs:element minOccurs="0" name="snils" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLNDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileOperationsLnUserGetLNDataOut" type="tns:FileOperationsLnUser_getLNData_Out" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:attribute name="author" type="xs:string" />
+  <xs:attribute name="email" type="xs:string" />
+  <xs:attribute name="phone" type="xs:string" />
+  <xs:attribute name="software" type="xs:string" />
+  <xs:attribute name="version" type="xs:string" />
+  <xs:attribute name="version_software" type="xs:string" />
+</xs:schema>

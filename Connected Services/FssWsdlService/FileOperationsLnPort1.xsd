@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Created" type="tns:AttributedDateTime" />
+  <xs:element name="Expires" type="tns:AttributedDateTime" />
+  <xs:element name="Timestamp" type="tns:TimestampType" />
+  <xs:complexType name="AttributedDateTime">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="tns:Id" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TimestampType">
+    <xs:sequence>
+      <xs:element minOccurs="0" form="qualified" name="Created" type="tns:AttributedDateTime" />
+      <xs:element minOccurs="0" form="qualified" name="Expires" type="tns:AttributedDateTime" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xs:sequence>
+    <xs:attribute ref="tns:Id" />
+    <xs:anyAttribute namespace="##other" processContents="skip" />
+  </xs:complexType>
+  <xs:complexType name="AttributedURI">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="tns:Id" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:attribute name="Id" type="xs:ID" />
+</xs:schema>
